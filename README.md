@@ -1,5 +1,5 @@
 ## Hi there 👋
-![snake animation](https://zaynab-nachabe.github.io/snake.svg)
+![Snake animation](https://zaynab-nachabe.github.io/zaynab-nachabe/snake.svg)
 <!--
 **zaynab-nachabe/zaynab-nachabe** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
