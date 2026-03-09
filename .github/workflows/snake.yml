@@ -1,17 +1,19 @@
-
 name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *" # every 12 hours
+    - cron: "0 */12 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Platane/snk@v3
-        id: snake
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate Snake Animation
+        uses: Platane/snk@v3
         with:
           github_user_name: zaynab-nachabe
           outputs: |
@@ -19,19 +21,24 @@ jobs:
             dist/snake-dark.svg?palette=github-dark
             dist/snake-purple.svg?color_snake=purple
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: animation
           path: dist
 
-      - uses: actions/upload-pages-artifact@v1
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
           path: dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
+    permissions: 
       pages: write
       id-token: write
-    uses: actions/deploy-pages@v2
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
