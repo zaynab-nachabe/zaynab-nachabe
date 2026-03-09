@@ -1,5 +1,8 @@
 name: Generate Snake
-
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 on:
   schedule:
     - cron: "0 */12 * * *"
@@ -28,7 +31,7 @@ jobs:
           path: dist
 
       - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
